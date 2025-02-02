@@ -17,12 +17,15 @@ import environ
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Initialize environment variables
+env = environ.Env()
+environ.Env.read_env(BASE_DIR / ".env")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-30any&o((kc0bb2ur$hz%%6em&zk@3^j*puerd&ex7etq%@&cw"
+SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -42,7 +45,6 @@ INSTALLED_APPS = [
     "listings",
     "rest_framework",
     "corsheaders",
-    "django.contrib.staticfiles",  # required for serving swagger ui's css/js files
     "drf_yasg",  # required for swagger
 ]
 
@@ -88,9 +90,6 @@ WSGI_APPLICATION = "alx_travel_app.wsgi.application"
 #     }
 # }
 
-# Initialize environment variables
-env = environ.Env()
-environ.Env.read_env()
 
 # Database Configuration
 DATABASES = {
