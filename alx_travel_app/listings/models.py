@@ -57,9 +57,6 @@ class Booking(models.Model):
     class Meta:
         verbose_name_plural = "Bookings"
         verbose_name = "Booking"
-        indexes = [
-            models.Index(fields=["id"], name="id_idx"),
-        ]
 
     def __str__(self):
         return f"{self.guest.username} - {self.listing.name}"
@@ -89,9 +86,6 @@ class Review(models.Model):
     class Meta:
         verbose_name_plural = "Reviews"
         verbose_name = "Review"
-        indexes = [
-            models.Index(fields=["id"], name="id_idx"),
-        ]
 
     def __str__(self):
         return f"{self.guest.username} - {self.listing.name}"
