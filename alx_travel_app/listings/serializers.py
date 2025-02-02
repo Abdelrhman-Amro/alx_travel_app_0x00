@@ -1,6 +1,21 @@
 from rest_framework import serializers
 
+from .models import Booking, Listing, Review
+
 
 class ListingSerializer(serializers.ModelSerializer):
-    host_name = serializers.CharField(source="host.username", read_only=True)
-    average_rating = serializers.SerializerMethodField()
+    class Meta:
+        model = Listing
+        fields = "__all__"
+
+
+class BookingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Booking
+        fields = "__all__"
+
+
+class ReviewSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Review
+        fields = "__all__"
